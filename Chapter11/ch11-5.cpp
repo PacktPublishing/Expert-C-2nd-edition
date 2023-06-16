@@ -52,5 +52,9 @@ int main() {
     AbstractFactorial* iterativeFactorial = FactorialFactory::createFactorial('I');
     int iterativeResult = iterativeFactorial->calculate(5);  // Result: 120
     std::cout << "Iterative Result: " << iterativeResult << std::endl;
+
+    delete recursiveFactorial;
+    delete iterativeFactorial;
+
     return 0;
 }

@@ -2,11 +2,11 @@
 
 class Printer {
 public:
-    static Printer& getInstance() {
+    static Printer* getInstance() {
         if (instance == nullptr) {
             instance = new Printer();
         }
-        return *instance;
+        return instance;
     }
 
     void print(const std::string& message) {
@@ -27,12 +27,10 @@ private:
 Printer* Printer::instance = nullptr;
 
 int main() {
-    Printer& printer = Printer::getInstance();
+    Printer* printer = Printer::getInstance();
 
-    printer.print("Hello, world!");
-    printer.print("This is a singleton printer.");
+    printer->print("Hello, world!");
+    printer->print("This is a singleton printer.");
 
-    delete &printer; // Clean up the singleton instance
-    
     return 0;
 }

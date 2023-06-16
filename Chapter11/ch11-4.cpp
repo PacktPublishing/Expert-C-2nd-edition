@@ -18,13 +18,18 @@ private:
     int y;
 };
 
+class MouseMoveObserver {
+public:
+    virtual void onMouseMove(const MouseEvent& event) = 0;
+};
+
 class MouseMoveSubject {
 public:
-    void attach(class MouseMoveObserver* observer) {
+    void attach(MouseMoveObserver* observer) {
         observers.push_back(observer);
     }
 
-    void detach(class MouseMoveObserver* observer) {
+    void detach(MouseMoveObserver* observer) {
         for (auto it = observers.begin(); it != observers.end(); ++it) {
             if (*it == observer) {
                 observers.erase(it);
@@ -40,12 +45,7 @@ public:
     }
 
 private:
-    std::vector<class MouseMoveObserver*> observers;
-};
-
-class MouseMoveObserver {
-public:
-    virtual void onMouseMove(const MouseEvent& event) = 0;
+    std::vector<MouseMoveObserver*> observers;
 };
 
 class MouseMoveLogger : public MouseMoveObserver {

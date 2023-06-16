@@ -6,9 +6,12 @@
 class Product;
 
 class Observer {
-    public:
-        virtual void update(Product* product) = 0;
+public:
+    virtual void update(Product* product) = 0;
+protected:
+    static std::vector<Product*> products;
 };
+std::vector<Product*> Observer::products;
 
 class Product {
     private:
@@ -84,7 +87,7 @@ class Cart : public Observer {
                 }
             }
         }
-        int size() {
+        size_t size() {
             return products.size();
         }
 };
