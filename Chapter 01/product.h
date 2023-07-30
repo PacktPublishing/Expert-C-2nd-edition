@@ -1,3 +1,6 @@
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
 #include <iostream>
 #include <string>
 
@@ -28,3 +31,5 @@ private:
 
 std::ostream& operator<<(std::ostream&, const Product&);
 std::istream& operator>>(std::istream&, Product&);
+
+#endif // PRODUCT_H
