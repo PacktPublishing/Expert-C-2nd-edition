@@ -2,6 +2,8 @@
 #define __CH14_TDD_V3__
 #include <iostream>
 #include <assert.h>
+#include <cstdint>
+
 template< class T>
 class Mat {
 public:
@@ -46,7 +48,5 @@ private:
 	uint32_t m_cols;  //# of cols
 	T* m_buf;
 };
-
-#include "ch14_tdd_v3.cpp"
 
 #endif
