@@ -1,9 +1,9 @@
 #include "ch7_two_to_three_tree_2.h"
 
-template <class valueType> 
-bool TwoThreeTree<valueType>::find(const valueType& target) const 
-{ 
-    return innerFind(target); 
+template <class valueType>
+bool TwoThreeTree<valueType>::find(const valueType& target) const
+{
+    return innerFind(_root, target);
 }
 
 template <class valueType> 
@@ -40,7 +40,8 @@ bool TwoThreeTree<valueType>::innerFind(node<valueType>* root, const valueType& 
         } 
         else if (target > root->_large_value) 
         { 
-            return innerFind(root->right, target); 
+            return innerFind(root->_right_node, target); 
         } 
-    } 
+    }
+    return false;
 }
