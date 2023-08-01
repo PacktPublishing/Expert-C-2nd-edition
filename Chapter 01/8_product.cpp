@@ -38,5 +38,5 @@ std::istream& operator>>(std::istream& is, Product& product) {
     return is;
 }
 
-
+int main(){}
 
