@@ -3,37 +3,35 @@
 
 struct User
 {
-  int age;
-  std::string name;
-  std::string phone_number;
-  std::string email;
+    int age;
+    std::string name;
+    std::string phone_number;
+    std::string email;
 };
 
 void update_age(User& u)
 {
-  u.age = u.age + 1;
+    u.age = u.age + 1;
 }
 
 User pure_update_age(const User& u) // cannot modify the input argument
 {
-  User tmp{u};
-  tmp.age = tmp.age + 1;
-  return tmp;
-}
-
-User pure_update_age(User u) // u is the copy of the passed object
-{
-  u.age = u.age + 1;
-  return u;
+    User tmp{ u };
+    tmp.age = tmp.age + 1;
+    return tmp;
 }
 
 int main()
 {
-    User john{.age{21}, .name{"John"}};
+    User john{.age = 21,.name = "John" };
 
-    auto updated{pure_update_age(john)};
-    std::cout << updated.age; // prints 22
+    update_age(john); // Modify 'john' directly
+    std::cout << john.age << std::endl; // prints 22
 
-    updated = pure_update_age(john);
-    std::cout << updated.age; // prints 22
+    User updated = pure_update_age(john); // Create a copy and modify it
+    std::cout << updated.age << std::endl; // prints 23
+
+    std::cout << john.age << std::endl; // prints 22, the original object 'john' remains unchanged
+
+    return 0;
 }
