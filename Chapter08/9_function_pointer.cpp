@@ -1,13 +1,20 @@
-typedef  void (*PF)(int);
-void foo(int arg) 
+#include <stdio.h>
+
+typedef void (*PF)(int);
+void foo(int arg)
 {
-  // do something with arg
+	// do something with arg
+	printf("Value of arg in foo: %d\n", arg);
 }
 
 int bar(int arg, PF f)
 {
-  f(arg);
-  return arg;
+	f(arg);
+	return arg;
 }
 
-bar(42, foo);
+int main()
+{
+	bar(42, foo);
+	return 0;
+}
