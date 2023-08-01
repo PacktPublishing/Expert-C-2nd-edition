@@ -149,3 +149,5 @@ void Mat<T> ::print(const char* str) const
 	}
 	cout << "]\n";
 }
+
+int main(){}
