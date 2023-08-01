@@ -1,3 +1,5 @@
+#include <string>
+#include <iostream>
 struct Product {
   std::string name;
   double price;

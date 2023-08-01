@@ -1,4 +1,4 @@
-#include <product.h>
+#include "product.h"
 
 void Product::set_name(const std::string& name) {
     name_ = name;

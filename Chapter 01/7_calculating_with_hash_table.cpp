@@ -1,5 +1,5 @@
-import <iostream>;
-import <unordered_map>; 
+#include <iostream>
+#include <unordered_map>
 
 int add(int a, int b) { return a + b; }
 
@@ -24,5 +24,5 @@ int main() {
     std::cin >> num1 >> num2 >> op;
 
     // perform the operation, as follows
-    operations[op](num1, num2);
+    std::cout << "Result: " << operations[op](num1, num2) << std::endl;
 }

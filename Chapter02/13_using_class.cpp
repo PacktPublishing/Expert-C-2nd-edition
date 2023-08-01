@@ -1,3 +1,5 @@
+#include<iostream>
+#include<string>
 class Product {
 public:
   Product() = default; // default constructor

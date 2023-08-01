@@ -2,7 +2,7 @@
 #include <string> 
   
 
-class listOfTasks { 
+class ListOfTasks { 
 public: 
 	virtual void setTask(std::string) = 0; 
 	virtual std::string getTask() const = 0; 

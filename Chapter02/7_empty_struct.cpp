@@ -1,3 +1,4 @@
+#include <iostream>
 struct Empty {};
 
 int main() {

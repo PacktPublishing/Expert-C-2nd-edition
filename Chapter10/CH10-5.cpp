@@ -26,7 +26,6 @@ compare_exchange_strong()
 wait()
 notify_one()
 notify_all()
-*/
 
 top()
 empty()
@@ -35,3 +34,4 @@ push()
 emplace()
 pop()
 swap()
+*/

@@ -1,3 +1,4 @@
+#include<iostream>
 class QuadraticSolver {
 public:
   QuadraticSolver() = default;
@@ -12,10 +13,12 @@ private:
   double c_;
   double discriminant_;
 };
-
+int main(){
 QuadraticSolver solver;
 solver.set_a(2);
 solver.set_b(5);
 solver.set_c(-8);
 solver.find_discriminant();
 std::cout << "x is: " << solver.solve() << std::endl;
+return 0;
+}

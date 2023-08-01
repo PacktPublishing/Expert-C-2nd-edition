@@ -3,7 +3,7 @@
 #include <deque>
 #include <list>
 
-#define __PRETTY_FUNCTION__ __FUNCSIG__
+#define __PRETTY_FUNCTION____FUNCSIG__
 
 using namespace std;
 template<class T, template<class, class...> class X, class... Args>

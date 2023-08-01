@@ -16,11 +16,12 @@ template <>
 //part C: test function
 using namespace std;
 
-void main(){
+int main(){
     string a = "abc", b="efg";
     cout << app_max(5, 6) << endl;   //line A
     cout << app_max(a, b) << endl;   //line B
     //question: what's the output if un-comment lines C and D?
     //char *x = "abc", *y="efg";     //Line C
     //cout << app_max(x, y) << endl; //line D
+    return 0;
 }

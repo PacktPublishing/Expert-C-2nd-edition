@@ -1,6 +1,6 @@
 #include <cinttypes> 
 #include <iostream>
-
+#include<memory>
 template <typename T> 
 class XOR_list 
 { 

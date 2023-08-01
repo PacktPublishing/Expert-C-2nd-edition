@@ -26,5 +26,5 @@ int main()
   std::sort(products.begin(), products.end(), ProductComparator{});
 
   std::sort(products.begin(), products.end(), 
-  [](const Product& a, const Product& b) { return a.price > b.price; })
+  [](const Product& a, const Product& b) { return a.price > b.price; });
 }
