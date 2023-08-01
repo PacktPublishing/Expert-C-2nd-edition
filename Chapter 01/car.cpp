@@ -11,3 +11,5 @@ void Car::setDriver(Person* driver) {
 void Car::addPassenger(Person* passenger) {
     passengers_.push_back(passenger);
 }
+
+int main(){}
