@@ -1,3 +1,5 @@
+#include <iostream>
+
 int max(int a, int b) {
     int max;
     if (a > b) {
@@ -8,4 +10,9 @@ int max(int a, int b) {
         max = b;
     }
     return max;
+}
+
+int main()
+{
+    std::cout << max(1, 6);
 }
