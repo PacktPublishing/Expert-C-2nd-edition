@@ -9,3 +9,5 @@ const std::string& Person::getName() const {
 int Person::getAge() const {
     return age_;
 }
+
+int main(){}
