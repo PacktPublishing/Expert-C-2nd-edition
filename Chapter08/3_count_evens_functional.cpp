@@ -12,7 +12,9 @@ int count_evens(const std::vector<int>& number_line) {
 
 std::vector<int> count_all_evens(const IntMatrix& numbers)
 {
-    return numbers | std::views::transform(count_evens);
+    std::vector<int> result;
+    std::ranges::transform(numbers, std::back_inserter(result), count_evens);
+    return result;
 }
 
 int main()
