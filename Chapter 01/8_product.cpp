@@ -38,5 +38,10 @@ std::istream& operator>>(std::istream& is, Product& product) {
     return is;
 }
 
-int main(){}
+int main(){
+    Product p;
+    std::cin >> p;
+    std::cout << p;
+    return 0;
+}
 

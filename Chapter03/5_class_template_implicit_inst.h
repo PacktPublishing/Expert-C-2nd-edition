@@ -8,8 +8,8 @@ class X {
 public:
     X() = default;
     ~X() = default;
-    void f() { std::cout << "X::f()" << endl; };
-    void g() { std::cout << "X::g()" << endl; };
+    void f() { std::cout << "X::f()" << std::endl; };
+    void g() { std::cout << "X::g()" << std::endl; };
     void h() { std::cout << "X::h()" << std::endl; };
 };
 
