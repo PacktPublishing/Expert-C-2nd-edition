@@ -3,6 +3,7 @@
 
 class Engine {
 public:
+    Engine() = default;
     Engine(int horsepower);
     int getHorsepower() const;
 
