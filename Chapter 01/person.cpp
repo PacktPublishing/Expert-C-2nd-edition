@@ -10,4 +10,3 @@ int Person::getAge() const {
     return age_;
 }
 
-int main(){}
