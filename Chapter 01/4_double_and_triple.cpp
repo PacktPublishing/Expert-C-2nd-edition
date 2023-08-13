@@ -9,5 +9,6 @@ int main() {
     int tripled = triple_it(42);  
     int test{0}; 
     std::cin >> test; 
-    int another_tripled = triple_it(test);  
+    int another_tripled = triple_it(test);
+    std::cout << "The tripled result is: " << another_tripled;
 }

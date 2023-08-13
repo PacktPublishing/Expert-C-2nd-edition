@@ -25,3 +25,4 @@ int main()
 
 	std::cout << "dot_product(5,a,b) = " << dotp<5, float>::result( a, b) << '\n'; //130
 	std::cout << "dot_product(5,a,a) = " << dotp<5,float>::result( a, a) << '\n';  //55
+}

@@ -3,15 +3,14 @@
 
 #include <iostream>
 
-using namespace std;
-
 template <class T>
 class X {
 public:
     X() = default;
     ~X() = default;
-    void f() { cout << "X::f()" << endl; };
-    void g() { cout << "X::g()" << endl; };
+    void f() { std::cout << "X::f()" << std::endl; };
+    void g() { std::cout << "X::g()" << std::endl; };
+    void h() { std::cout << "X::h()" << std::endl; };
 };
 
 #endif

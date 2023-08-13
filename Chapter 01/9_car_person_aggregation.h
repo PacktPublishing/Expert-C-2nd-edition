@@ -1,12 +1,16 @@
+#ifndef CAR_H
+#define CAR_H
+
 #include <vector>
-
-class Person; // forward declaration
-
-class Engine { /* code omitted for brevity */ };
+#include "person.h"
+#include "engine.h"
 
 class Car {
 public: 
     Car();
+    // ...
+    void setDriver(Person* driver);
+    void addPassenger(Person* passenger);
     // ...
 private:
     Person* driver_; // aggregation
@@ -14,3 +18,5 @@ private:
     Engine engine_; // composition
     // ...
 };
+
+#endif // CAR_H

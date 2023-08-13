@@ -9,7 +9,7 @@ public:
 	X() = default;
 	~X() = default;
 	void f() { std::cout << "X::f()" << std::endl; };
-	void g() { blabla; };
+	void g() { char blabla; };
 };
 
 #endif
