@@ -2,8 +2,9 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <algorithm>
 
-class Target; // forward declaration
+class Target; // Forward declaration for Target
 
 class Observer {
 public:
@@ -32,7 +33,7 @@ public:
 
 class Target {
 private:
-    std::string texture; // intrinsic state
+    std::string texture;
     Subject* subject;
 
 public:
@@ -43,52 +44,11 @@ public:
     }
 
     void hit() {
-        subject->notifyObservers(this); // notify observers of target hit
+        subject->notifyObservers(this);
     }
 };
 
-class GameManager : public Observer {
-private:
-    static GameManager* instance; // singleton instance
-    GameManager() {} // private constructor to prevent direct instantiation
-    int score;
-
-public:
-    static GameManager* getInstance() {
-        if (instance == nullptr) {
-            instance = new GameManager(); // create singleton instance if it doesn't exist
-        }
-        return instance;
-    }
-
-    void onTargetHit(Target* target) {
-        score += 10; // add points for hitting a target
-        std::cout << "Target hit! Score: " << score << std::endl;
-    }
-
-    void startGame() {
-        std::cout << "Starting the game...\n";
-        Weapon* weapon = WeaponFactory::createWeapon("Sword");
-        Target* target = TargetFactory::getTarget("red", this);
-        target->draw(10, 10);
-        weapon->use(target);
-        delete weapon;
-    }
-
-    void pauseGame() {
-        std::cout << "Pausing the game...\n";
-    }
-
-    void resumeGame() {
-        std::cout << "Resuming the game...\n";
-    }
-
-    void endGame() {
-        std::cout << "Ending the game...\n";
-    }
-};
-
-GameManager* GameManager::instance = nullptr; // initialize singleton instance to null
+class Weapon; // Forward declaration for Weapon
 
 class Weapon {
 private:
@@ -112,26 +72,76 @@ public:
 
 class TargetFactory {
 private:
-    static std::unordered_map<std::string, Target*> targets; // flyweight pool
+    static std::unordered_map<std::string, Target*> targets;
 
 public:
     static Target* getTarget(std::string texture, Subject* subject) {
-        if (targets.count(texture) == 0) { // check if target exists in pool
-            targets[texture] = new Target(texture, subject); // create new target if it doesn't exist
+        if (targets.count(texture) == 0) {
+            targets[texture] = new Target(texture, subject);
         }
-        return targets[texture]; // return existing or newly created target
+        return targets[texture];
     }
 };
 
-std::unordered_map<std::string, Target*> TargetFactory::targets = {}; // initialize flyweight pool
+std::unordered_map<std::string, Target*> TargetFactory::targets = {};
+
+class GameManager : public Observer {
+private:
+    static GameManager* instance;
+    GameManager() : score(0), gameSubject(nullptr) {} // Initialize score and gameSubject
+    int score;
+    Subject* gameSubject; // Store a reference to the Subject
+
+public:
+    static GameManager* getInstance() {
+        if (instance == nullptr) {
+            instance = new GameManager();
+        }
+        return instance;
+    }
+
+    void setGameSubject(Subject* subject) {
+        gameSubject = subject;
+    }
+
+    void onTargetHit(Target* target) {
+        score += 10;
+        std::cout << "Target hit! Score: " << score << std::endl;
+    }
+
+    void startGame() {
+        std::cout << "Starting the game...\n";
+        gameSubject = new Subject(); // Create the Subject
+        setGameSubject(gameSubject);
+        Target* target = TargetFactory::getTarget("red", gameSubject);
+        target->draw(10, 10);
+        Weapon* weapon = WeaponFactory::createWeapon("Sword");
+        weapon->use(target);
+        delete weapon;
+        delete gameSubject; // Clean up the Subject
+    }
+
+    void pauseGame() {
+        std::cout << "Pausing the game...\n";
+    }
+
+    void resumeGame() {
+        std::cout << "Resuming the game...\n";
+    }
+
+    void endGame() {
+        std::cout << "Ending the game...\n";
+    }
+};
+
+GameManager* GameManager::instance = nullptr;
 
 int main() {
-    GameManager* gameManager = GameManager::getInstance(); // get singleton instance
-    gameManager->startGame(); // start the game
-    gameManager->pauseGame(); // pause the game
-    gameManager->resumeGame(); // resume the game
-    gameManager->endGame(); // end the game
+    GameManager* gameManager = GameManager::getInstance();
+    gameManager->startGame();
+    gameManager->pauseGame();
+    gameManager->resumeGame();
+    gameManager->endGame();
 
     return 0;
 }
-

@@ -3,6 +3,9 @@
 
 // Function to calculate the average of a vector of numbers
 double calculateAverage(const std::vector<double>& data) {
+    if(data.size() == 0) {
+        return 0.0;
+    }
     double sum = 0.0;
     for (double value : data) {
         sum += value;
